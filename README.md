@@ -25,20 +25,22 @@
 2. Go to "Proxy Hosts" and "Add Proxy Host"
 3. ...
 
-
-## Tips and tricks
-
-### Docker network
+## Docker network
 By creating a custom Docker network, we don't need to publish ports for our upstream services to all of the Docker host's interfaces.
 
 Create the home-server network: `docker network create home-server`
 
 Then add the following to the `docker-compose.yml` file for both NPM and any other services running on the Docker host:
 ```
+# Service-level specification
+networks:
+  - home-server-network
+
+# Top-level specification
 networks:
   home-server-network:
     external: true
     name: home-server 
 ```
 
-Now in the NPM UI you can create a proxy host with the docker service name as the hostname. Ports are "exposed" by each container and not available on the Docker host outside of this Docker network.
+Now in the NPM UI you can create a proxy host with the **docker service name as the hostname**. Ports are "exposed" by each container and not available on the Docker host outside of this Docker network.

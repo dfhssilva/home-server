@@ -10,6 +10,8 @@ services:
     volumes:
       - ./volumes/npm_data:/data
       - ./volumes/letsencrypt:/etc/letsencrypt
+    networks:
+      - home-server-network
 
 networks:
   home-server-network:

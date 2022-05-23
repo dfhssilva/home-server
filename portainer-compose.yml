@@ -1,11 +1,13 @@
 version: "3"
 services:
-  portainer:
+  portainer: # Used as the hostname for the Proxy host in NPM
     image: 'portainer/portainer-ce:latest'
     restart: unless-stopped
     volumes:
       - ./volumes/portainer_data:/data 
       - /var/run/docker.sock:/var/run/docker.sock 
+    networks:
+      - home-server-network
 
 networks:
   home-server-network:
