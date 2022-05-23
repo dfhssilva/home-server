@@ -1,0 +1,16 @@
+version: "3"
+services:
+  portainer:
+    image: 'portainer/portainer-ce:latest'
+    restart: unless-stopped
+    ports:
+      - '8000:8000'
+      - '9443:9443'
+    volumes:
+      - ./volumes/portainer_data:/data 
+      - /var/run/docker.sock:/var/run/docker.sock 
+
+networks:
+  home-server-network:
+    external: true
+    name: home-server 
