@@ -1,4 +1,5 @@
 version: "3"
+
 services:
   npm:
     image: 'jc21/nginx-proxy-manager:latest'
@@ -11,9 +12,9 @@ services:
       - ./volumes/npm_data:/data
       - ./volumes/letsencrypt:/etc/letsencrypt
     networks:
-      - home-server-network
+      - frontend 
 
 networks:
-  home-server-network:
+  frontend:
     external: true
     name: home-server 
