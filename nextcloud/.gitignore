@@ -1,7 +1,6 @@
 nextcloud-db
 nextcloud-data
-nextcloud_admin_password.txt
-nextcloud_admin_user.txt
-postgres_db.txt
-postgres_password.txt
-postgres_user.txt
+nextcloud_mysql_db.txt
+nextcloud_mysql_root_password.txt 
+nextcloud_mysql_password.txt
+nextcloud_mysql_user.txt
