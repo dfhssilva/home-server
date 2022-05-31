@@ -5,12 +5,13 @@ services:
     image: nextcloud
     restart: unless-stopped
     volumes:
-      - ./volumes/nextcloud-data:/var/www/html
+      - ./nextcloud-data:/var/www/html
     environment:
       - MYSQL_PASSWORD_FILE=/run/secrets/mysql_password
       - MYSQL_DATABASE_FILE=/run/secrets/mysql_db
       - MYSQL_USER_FILE=/run/secrets/mysql_user
       - MYSQL_HOST=nextcloud-db
+      - OVERWRITEPROTOCOL=https
     secrets:
       - mysql_db
       - mysql_password
@@ -25,7 +26,7 @@ services:
     image: lscr.io/linuxserver/mariadb:latest
     restart: unless-stopped
     volumes:
-      - ./volumes/nextcloud-db:/config
+      - ./nextcloud-db:/config
     environment:
       - PUID=1000
       - PGID=1000
@@ -50,10 +51,10 @@ networks:
 
 secrets:
   mysql_db:
-    file: ./secrets/nextcloud_mysql_db.txt
+    file: ./nextcloud_mysql_db.txt
   mysql_root_password:
-    file: ./secrets/nextcloud_mysql_root_password.txt
+    file: ./nextcloud_mysql_root_password.txt
   mysql_password:
-    file: ./secrets/nextcloud_mysql_password.txt
+    file: ./nextcloud_mysql_password.txt
   mysql_user:
-    file: ./secrets/nextcloud_mysql_user.txt
+    file: ./nextcloud_mysql_user.txt

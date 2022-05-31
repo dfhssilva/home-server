@@ -9,8 +9,8 @@ services:
       - '443:443' # Public HTTPS Port
       - '81:81' # Admin Web Port
     volumes:
-      - ./volumes/npm_data:/data
-      - ./volumes/letsencrypt:/etc/letsencrypt
+      - ./npm_data:/data
+      - ./letsencrypt:/etc/letsencrypt
     networks:
       - frontend 
 

@@ -83,3 +83,7 @@ To run `ddclient` as a daemon:
 4. Make the script executable: `sudo chmod +x /etc/cron.weekly/ddclient`
 5. Check everything runs smoothly `sudo service ddclient status`
 
+## Directory structure
+Each hosted service contains a folder with its name in the repository.
+
+Inside each folder is the corresponding service `docker-compose.yml` used to launch it, and a `.gitignore` file in case any files are passed to the container and should be kept out of version control. An optional README file can be kept in the subdirectory to give additional information to the service.

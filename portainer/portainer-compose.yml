@@ -5,7 +5,7 @@ services:
     image: 'portainer/portainer-ce:latest'
     restart: unless-stopped
     volumes:
-      - ./volumes/portainer_data:/data 
+      - ./portainer_data:/data 
       - /var/run/docker.sock:/var/run/docker.sock 
     networks:
       - frontend 
