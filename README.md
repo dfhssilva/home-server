@@ -24,7 +24,7 @@
 
 ### Add new proxy hosts to NPM
 **Requirements**:
-- NPM container should be running. The container can be launched with `docker compose -f npm-container.yml up -d`
+- NPM container should be running. The container can be launched with `docker compose -f npm-compose.yml up -d`
 - Proxy host's service should be running as a Docker container within the home-server network. See [Docker network](#docker-network)
 
 1. Access the NPM dashboard

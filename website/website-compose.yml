@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  website: # Used as the hostname for the Proxy host in NPM
+    build: .
+    image: jekyll-website
+    restart: unless-stopped
+    ports:
+      - 4000:4000
+    volumes:
+      - ./myblog:/usr/src/app/myblog
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external: true
+    name: home-server
