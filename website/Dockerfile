@@ -1,6 +1,7 @@
 FROM ruby:3.0
 
 # throw errors if Gemfile has been modified since Gemfile.lock
+# comment when developing to allow gem installation
 RUN bundle config --global frozen 1
 
 WORKDIR /usr/src/app/myblog
