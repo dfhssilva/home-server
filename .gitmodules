@@ -1,0 +1,3 @@
+[submodule "website/myblog"]
+	path = website/myblog
+	url = https://github.com/dfhssilva/myblog.git
