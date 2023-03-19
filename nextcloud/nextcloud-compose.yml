@@ -23,7 +23,7 @@ services:
       - backend
 
   nextcloud-db:
-    image: lscr.io/linuxserver/mariadb:latest
+    image: linuxserver/mariadb:latest
     restart: unless-stopped
     volumes:
       - ./nextcloud-db:/config
