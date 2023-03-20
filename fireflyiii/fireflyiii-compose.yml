@@ -1,20 +1,19 @@
 version: '3.3'
 
 services:
-  app:
+  fireflyiii:
     image: fireflyiii/core:latest
     restart: always
     volumes:
       - firefly_iii_upload:/var/www/html/storage/upload
     env_file: .env
-    ports:
-      - 80:8080
     depends_on:
-      - db
+      - fireflyiii-db
     networks:
       - frontend
       - backend
-  db:
+
+  fireflyiii-db:
     image: linuxserver/mariadb:latest
     hostname: fireflyiiidb
     restart: always
