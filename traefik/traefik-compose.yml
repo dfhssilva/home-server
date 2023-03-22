@@ -12,6 +12,7 @@ services:
       - "--providers.docker"
       # Do not expose containers unless explicitly told so
       - "--providers.docker.exposedbydefault=false"
+      # Traefik will listen to incoming request (necessary for HTTP challenge) on the port 80 (http)
       - "--entrypoints.web.address=:80"
       # Traefik will listen to incoming request on the port 443 (https)
       - "--entrypoints.websecure.address=:443"
@@ -25,7 +26,7 @@ services:
       # Tell to store the certificate on a path under our volume
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
-      # The HTTP port
+      # The HTTP port (necessary for HTTP challenge)
       - "80:80"
       # The HTTPS port
       - "443:443"
