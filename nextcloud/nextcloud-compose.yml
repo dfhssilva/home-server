@@ -6,8 +6,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./nextcloud-data:/var/www/html
-    ports:
-      - "90:80"
     environment:
       - MYSQL_PASSWORD_FILE=/run/secrets/mysql_password
       - MYSQL_DATABASE_FILE=/run/secrets/mysql_db
@@ -24,7 +22,10 @@ services:
       - frontend
       - backend
     labels:
+      - traefik.enable=true
       - traefik.http.routers.nextcloud.rule=Host(`nextcloud.dfhssilva.xyz`)
+      - traefik.http.routers.nextcloud.entrypoints=websecure
+      - traefik.http.routers.nextcloud.tls.certresolver=myresolver
 
   nextcloud-db:
     image: linuxserver/mariadb:latest
