@@ -5,7 +5,7 @@ services:
     image: fireflyiii/core:latest
     restart: always
     volumes:
-      - firefly_iii_upload:/var/www/html/storage/upload
+      - ./firefly_iii_upload:/var/www/html/storage/upload
     env_file: .env
     depends_on:
       - db
@@ -24,7 +24,7 @@ services:
     restart: always
     env_file: .db.env
     volumes:
-      - firefly_iii_db:/var/lib/mysql
+      - ./firefly_iii_db:/var/lib/mysql
     networks:
       - backend
 
