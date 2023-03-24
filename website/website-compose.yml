@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  website: # Used as the hostname for the Proxy host in NPM
+  website:
     build: .
     image: jekyll-website
     restart: unless-stopped
