@@ -5,7 +5,6 @@ services:
     # The official v2 Traefik docker image
     image: traefik:v2.9
     command: 
-      #- "--log.level=DEBUG"  # Uncomment to test/debug
       # Traefik will listen on port 8080 by default for API request
       - "--api.insecure=true"
       # Enabling docker provider
@@ -20,11 +19,12 @@ services:
       - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
       # Tell it to use our predefined entrypoint named "web"
       - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
-      #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"  # Uncomment to test/debug
       # The email to provide to let's encrypt
       - "--certificatesresolvers.myresolver.acme.email=dfhssilva@protonmail.com"
       # Tell to store the certificate on a path under our volume
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      # Set default docker network (necessary for containers with multiple networks) 
+      - "--providers.docker.network=home-server"
     ports:
       # The HTTP port (necessary for HTTP challenge)
       - "80:80"
