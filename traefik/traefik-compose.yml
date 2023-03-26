@@ -7,8 +7,6 @@ services:
     command: 
       # Enable the Traefik dashboard
       - "--api.dashboard=true"
-      # Traefik will listen on port 8080 by default for API request
-      - "--api.insecure=true"
       # Enabling docker provider
       - "--providers.docker"
       # Do not expose containers unless explicitly told so
@@ -32,7 +30,7 @@ services:
       - "80:80"
       # The HTTPS port
       - "443:443"
-      # The Web UI (enabled by --api.insecure=true)
+      # The Web UI
       - "8080:8080"
     volumes:
       # Create a letsencrypt dir within the folder where the docker-compose file is
