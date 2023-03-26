@@ -1,4 +1,4 @@
-# Fireflyiii Documentation
+# Fireflyiii - Before Deployment
 
 Before composing up the configuration file, create `.db.env` and `.env` files inside this folder. Check this [link](https://docs.firefly-iii.org/firefly-iii/installation/docker/) for more information and to obtain a template for these files.
 
