@@ -5,10 +5,10 @@ services:
     # The official v2 Traefik docker image
     image: traefik:v2.9
     command: 
+      # Enable docker provider
+      - "--providers.docker"
       # Enable the Traefik dashboard
       - "--api.dashboard=true"
-      # Enabling docker provider
-      - "--providers.docker"
       # Do not expose containers unless explicitly told so
       - "--providers.docker.exposedbydefault=false"
       # Traefik will listen to incoming request (necessary for HTTP challenge) on the port 80 (http)
@@ -30,20 +30,23 @@ services:
       - "80:80"
       # The HTTPS port
       - "443:443"
-      # The Web UI
-      - "8080:8080"
     volumes:
       # Create a letsencrypt dir within the folder where the docker-compose file is
       - ./letsencrypt:/letsencrypt
       # So that Traefik can read the Docker events
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      # So that authentication can be set up for the Traefik dashboard
+      - ./usersfile:/usersfile
     networks:
       - frontend 
     labels:
-      - "traefik.http.routers.dashboard.rule=Host(`traefik.dfhssilva.xyz`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
-      - "traefik.http.routers.dashboard.service=api@internal"
-      - "traefik.http.routers.dashboard.middlewares=auth"
-      - "traefik.http.middlewares.auth.basicauth.usersfile=./usersfile"
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik_https.rule=Host(`traefik.dfhssilva.xyz`)"
+      - "traefik.http.routers.traefik_https.entrypoints=websecure"
+      - "traefik.http.routers.traefik_https.tls.certresolver=myresolver"
+      - "traefik.http.routers.traefik_https.service=api@internal"
+      - "traefik.http.routers.traefik_https.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.usersfile=/usersfile"
 
 networks:
   frontend:
