@@ -33,7 +33,7 @@ It is simple and easy to configure a new service in the system:
     1. The application container should belong to the `home-server` network. See the [Docker network section](#docker-network).
     2. Traefik detects service-specific configurations through [Docker labels](https://docs.docker.com/engine/reference/commandline/run/#label). See the [Traefik service configuration](#traefik-service-configuration) section.
 2. Traefik's container should be up and running. The container can be launched with `cd traefik && docker compose -f traefik-compose.yml up -d`.
-3. The new service should be up and running. Traefik will then setup the forwarding of the service to the defined subdomain automatically. You can check the current active routes in the Traefik dashboard at `localhost:8080`.
+3. The new service should be up and running. Traefik will then setup the forwarding of the service to the defined subdomain automatically. You can check the current active routes in the Traefik dashboard.
 
 ## Docker network
 By creating a custom [Docker network](https://docs.docker.com/network/), the container ports are only available on this network and anywhere else, making it easy and secure for containers and services to communicate between them.
